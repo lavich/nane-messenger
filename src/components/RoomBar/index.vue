@@ -3,8 +3,8 @@
     <AvatarCard :name="userName" />
     <nav>
       <ul>
-        <li v-for="room in rooms" :key="room">
-          <RoomCard :to="room" />
+        <li v-for="(room, index) in rooms" :key="index">
+          <RoomCard :room="room" />
         </li>
       </ul>
     </nav>
@@ -16,17 +16,28 @@ import Vue from "vue";
 
 import RoomCard from "@/components/RoomBar/RoomCard.vue";
 import AvatarCard from "@/components/RoomBar/AvatarCard.vue";
+import { Room } from "@/types";
 
 export default Vue.extend({
   name: "RoomBar",
   components: { AvatarCard, RoomCard },
   data: () => ({
-    rooms: ["/chats/d", "/chats/a"],
+    // rooms: ["/chats/d", "/chats/a"],
   }),
   computed: {
     userName(): string {
       return this.$accessor.User.name;
     },
+    rooms(): Room[] {
+      return this.$accessor.Rooms.rooms;
+    },
+  },
+  async created() {
+    try {
+      await this.$accessor.Rooms.getRooms();
+    } catch (e) {
+      // TODO
+    }
   },
 });
 </script>

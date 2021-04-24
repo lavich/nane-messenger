@@ -1,27 +1,45 @@
 <template>
-  <router-link :to="to" class="block p-2 flex gap-2 hover:bg-gray-500">
+  <router-link :to="roomLink" class="block p-2 flex gap-2 hover:bg-gray-500">
     <span class="w-10 h-10 rounded-full bg-gray-100 grid place-content-center">
-      <span class="text-gray-600">AV</span>
+      <span class="text-gray-600">{{ avatarName }}</span>
     </span>
-    <span class="flex-1">
+    <span class="flex-1 text-sm">
       <span class="flex justify-between">
-        <span>Name</span><span>Date</span>
+        <span class="text-sm line-clamp-1">{{ room.name }}</span>
+        <span class="text-xs">{{ lastMessageDate }}</span>
       </span>
-      <span>Message</span>
+      <span class="text-xs line-clamp-1">
+        <span class="text-blue-400">{{ lastMessage.sender.username }}:</span>
+        {{ lastMessage.text }}
+      </span>
     </span>
   </router-link>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from "vue";
-import { Route } from "vue-router";
+import { Room, ServerMessage } from "@/types";
 
 export default Vue.extend({
   name: "RoomCard",
   props: {
-    to: {
-      type: [Object, String] as PropType<Route | string>,
+    room: {
+      type: Object as PropType<Room>,
       required: true,
+    },
+  },
+  computed: {
+    roomLink(): string {
+      return this.room.name;
+    },
+    avatarName(): string {
+      return this.room.name.slice(0, 2).toUpperCase();
+    },
+    lastMessage(): ServerMessage {
+      return this.room.messages[this.room.messages.length - 1];
+    },
+    lastMessageDate(): string {
+      return new Date(this.lastMessage.created).toLocaleDateString();
     },
   },
 });
