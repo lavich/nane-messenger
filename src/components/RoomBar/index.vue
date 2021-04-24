@@ -2,8 +2,8 @@
   <div class="h-full bg-gray-600 text-white">
     <AvatarCard :name="userName" />
     <nav>
-      <ul>
-        <li v-for="(room, index) in rooms" :key="index">
+      <ul class="pl-2">
+        <li v-for="(room, index) in rooms" :key="index" class="pt-2">
           <RoomCard :room="room" />
         </li>
       </ul>

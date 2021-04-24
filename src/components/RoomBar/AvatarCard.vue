@@ -1,7 +1,7 @@
 <template>
   <div class="block p-2 flex gap-2">
     <span
-      class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-100 grid place-content-center"
+      class="flex-shrink-0 w-12 h-12 rounded-full bg-gray-100 grid place-content-center"
     >
       <span class="text-gray-600">{{ avatarName }}</span>
     </span>

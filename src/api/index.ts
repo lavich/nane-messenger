@@ -1,7 +1,6 @@
 import { ServerMessage, Settings } from "@/types";
 
 const apiUrl = process.env.VUE_APP_API_URL;
-console.log(apiUrl);
 
 // Настройки сервера
 export const getSettings = async (): Promise<Settings> => {

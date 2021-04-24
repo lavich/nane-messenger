@@ -1,12 +1,11 @@
 <template>
   <div class="grid grid-cols-12 h-screen">
-    <aside class="col-span-3">
+    <aside class="col-span-3 border-r border-white border-solid">
       <RoomBar />
     </aside>
 
-    <main class="col-span-9 h-full flex flex-col">
+    <main class="col-span-9 h-screen flex flex-col">
       <router-view class="flex-1"></router-view>
-      <input class="w-full bg-gray-100" />
     </main>
   </div>
 </template>

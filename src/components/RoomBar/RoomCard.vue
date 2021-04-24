@@ -1,5 +1,9 @@
 <template>
-  <router-link :to="roomLink" class="block p-2 flex gap-2 hover:bg-gray-500">
+  <router-link
+    :to="roomLink"
+    active-class="bg-blue-500 hover:bg-blue-500"
+    class="block rounded-l-md p-2 flex gap-2 hover:bg-gray-500"
+  >
     <span class="w-10 h-10 rounded-full bg-gray-100 grid place-content-center">
       <span class="text-gray-600">{{ avatarName }}</span>
     </span>
@@ -9,7 +13,7 @@
         <span class="text-xs">{{ lastMessageDate }}</span>
       </span>
       <span class="text-xs line-clamp-1">
-        <span class="text-blue-400">{{ lastMessage.sender.username }}:</span>
+        <span class="text-blue-200">{{ lastMessage.sender.username }}:</span>
         {{ lastMessage.text }}
       </span>
     </span>
