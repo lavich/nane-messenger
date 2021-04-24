@@ -6,7 +6,7 @@
 
     <main class="col-span-9 h-full flex flex-col">
       <router-view class="flex-1"></router-view>
-      <input class="w-full bg-gray-100"/>
+      <input class="w-full bg-gray-100" />
     </main>
   </div>
 </template>
