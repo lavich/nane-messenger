@@ -1,7 +1,7 @@
 <template>
-  <div class="h-full bg-gray-600 text-white">
+  <div class="flex flex-col h-screen bg-gray-600 text-white">
     <AvatarCard :name="userName" />
-    <nav>
+    <nav class="overflow-y-auto pb-2">
       <ul class="pl-2 space-y-2">
         <li v-for="(room, index) in rooms" :key="index">
           <RoomCard :room="room" />
@@ -35,13 +35,6 @@ export default Vue.extend({
     rooms(): Room[] {
       return this.$accessor.Rooms.rooms;
     },
-  },
-  async created() {
-    try {
-      await this.$accessor.Rooms.getRooms();
-    } catch (e) {
-      // TODO
-    }
   },
 });
 </script>

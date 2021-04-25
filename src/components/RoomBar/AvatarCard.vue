@@ -1,15 +1,12 @@
 <template>
-  <div class="block p-2 flex gap-2">
+  <div class="p-2 flex items-center gap-2">
     <img
       src="../../assets/roma.png"
       alt="roma avatar"
       class="flex-shrink-0 w-12 h-12 rounded-full bg-gray-100 grid place-content-center"
     />
-    <span class="flex-1 grid place-content-center">
-      <label v-if="isEditName" class="text-black">
-        <input :value="name" @change="updateName" @blur="updateName" />
-      </label>
-      <button v-else @click="isEditName = true">{{ name }}</button>
+    <span class="line-clamp-1">
+      {{ name }}
     </span>
   </div>
 </template>

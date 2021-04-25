@@ -4,11 +4,11 @@
       <span class="text-gray-600">{{ avatarName }}</span>
     </span>
     <div class="flex-1 text-sm">
-      <div class="flex justify-between">
-        <span class="text-sm text-blue-400 line-clamp-1">{{ userName }}</span>
-        <span class="text-xs">{{ messageDate }}</span>
-      </div>
+      <span class="text-sm text-blue-400 line-clamp-1">{{ userName }}</span>
       <div>{{ message.text }}</div>
+      <span class="pl-4 float-right text-xs text-gray-600">
+        {{ messageDate }}
+      </span>
     </div>
   </div>
 </template>

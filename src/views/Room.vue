@@ -6,7 +6,7 @@
 
     <div class="flex-1 overflow-y-auto">
       <ul
-        class="min-h-full flex flex-col justify-end space-y-2 p-2 bg-gray-100"
+        class="min-h-full flex flex-col justify-end items-start space-y-2 p-2 bg-gray-100"
       >
         <li v-for="(message, index) in room.messages" :key="index">
           <Message :message="message" />

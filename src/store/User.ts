@@ -7,7 +7,7 @@ interface State {
 
 export const namespaced = true;
 export const state = (): State => ({
-  name: "TestName",
+  name: "",
 });
 
 export const getters = getterTree(state, {});
