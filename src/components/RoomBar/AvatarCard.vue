@@ -1,10 +1,10 @@
 <template>
   <div class="block p-2 flex gap-2">
-    <span
+    <img
+      src="../../assets/roma.png"
+      alt="roma avatar"
       class="flex-shrink-0 w-12 h-12 rounded-full bg-gray-100 grid place-content-center"
-    >
-      <span class="text-gray-600">{{ avatarName }}</span>
-    </span>
+    />
     <span class="flex-1 grid place-content-center">
       <label v-if="isEditName" class="text-black">
         <input :value="name" @change="updateName" @blur="updateName" />

@@ -10,10 +10,7 @@
       </li>
     </ul>
 
-    <form class="flex p-2 bg-gray-600 space-x-2">
-      <textarea rows="1" class="flex-1 w-full px-4 py-2 rounded-md" />
-      <button class="rounded-md px-4 bg-white">Send</button>
-    </form>
+    <InputForm />
   </div>
   <div v-else>Loading...</div>
 </template>
@@ -24,10 +21,11 @@ import Vue from "vue";
 import { Room } from "@/types";
 import Message from "@/components/Message.vue";
 import autosize from "autosize";
+import InputForm from "@/components/InputForm.vue";
 
 export default Vue.extend({
   name: "Room",
-  components: { Message },
+  components: { InputForm, Message },
   computed: {
     room(): Room | undefined {
       const roomName = this.$route.params.id;

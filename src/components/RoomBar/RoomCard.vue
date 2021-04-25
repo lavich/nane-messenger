@@ -34,7 +34,7 @@ export default Vue.extend({
   },
   computed: {
     roomLink(): string {
-      return this.room.name;
+      return "/chats/" + this.room.name;
     },
     avatarName(): string {
       return this.room.name.slice(0, 2).toUpperCase();
