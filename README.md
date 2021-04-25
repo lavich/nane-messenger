@@ -16,7 +16,7 @@
   ```typescript
   this.$accessor.settings.max_room_title_length; // number
   ```
-- Для верстки использовал utility-first scc-библиотеку [Tailwindcss](Tailwindcss.com) помогающую быстро и легко верстать
+- Для верстки использовал utility-first scc-библиотеку [Tailwindcss](https://Tailwindcss.com) помогающую быстро и легко верстать
 
 ## Запуск мессенджера
 
