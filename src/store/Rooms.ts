@@ -6,6 +6,7 @@ interface State {
   rooms: Room[];
 }
 
+export const namespaced = true;
 export const state = (): State => ({
   rooms: [],
 });
@@ -26,6 +27,15 @@ export const mutations = mutationTree(state, {
     state.rooms = state.rooms.map((room) =>
       room.name !== roomName ? room : { name: roomName, messages }
     );
+  },
+  ADD_MESSAGE(state, message: ServerMessage) {
+    state.rooms = state.rooms.map((room) => {
+      if (room.name === message.room) {
+        const messages = [...room.messages, message];
+        return { ...room, messages };
+      }
+      return room;
+    });
   },
 });
 

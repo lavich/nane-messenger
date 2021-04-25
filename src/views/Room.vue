@@ -4,11 +4,15 @@
       {{ room.name }}
     </h1>
 
-    <ul class="flex-1 grid gap-2 overflow-y-auto items-end p-2 bg-gray-100">
-      <li v-for="(message, index) in room.messages" :key="index">
-        <Message :message="message" />
-      </li>
-    </ul>
+    <div class="flex-1 overflow-y-auto">
+      <ul
+        class="min-h-full flex flex-col justify-end space-y-2 p-2 bg-gray-100"
+      >
+        <li v-for="(message, index) in room.messages" :key="index">
+          <Message :message="message" />
+        </li>
+      </ul>
+    </div>
 
     <InputForm />
   </div>

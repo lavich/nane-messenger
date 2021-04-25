@@ -1,17 +1,23 @@
 import Vue from "vue";
-import Vuex from "vuex";
+import Vuex, { Plugin } from "vuex";
 import { actionTree, getterTree, mutationTree, useAccessor } from "typed-vuex";
 
 import * as User from "./User";
 import * as Rooms from "./Rooms";
+import * as WS from "./WS";
 import { Settings } from "@/types";
 import { getSettings } from "@/api";
 
 Vue.use(Vuex);
 
+interface State {
+  settings: Settings;
+}
+
 const state = () => ({
   settings: {} as Settings,
 });
+
 const getters = getterTree(state, {});
 const mutations = mutationTree(state, {
   SET_SETTINGS(state, settings: Settings) {
@@ -28,6 +34,15 @@ const actions = actionTree(
   }
 );
 
+// Подписка на получение сообщений
+const subscribeOnWS: Plugin<State> = (store) => {
+  store.subscribe((mutation) => {
+    if (mutation.type === "WS/SOCKET_ONMESSAGE") {
+      store.commit("Rooms/ADD_MESSAGE", mutation.payload);
+    }
+  });
+};
+
 const storePattern = {
   state,
   getters,
@@ -36,7 +51,9 @@ const storePattern = {
   modules: {
     User,
     Rooms,
+    WS,
   },
+  plugins: [subscribeOnWS],
 };
 
 const store = new Vuex.Store(storePattern);

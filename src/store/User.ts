@@ -5,6 +5,7 @@ interface State {
   name: string;
 }
 
+export const namespaced = true;
 export const state = (): State => ({
   name: "TestName",
 });
