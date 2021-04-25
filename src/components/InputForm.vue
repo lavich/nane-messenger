@@ -10,6 +10,7 @@
         required
         :maxlength="maxMessageLength"
         class="w-full px-4 py-2 rounded-md"
+        @keyup.ctrl.enter="onSubmit"
       />
     </label>
     <button type="submit" class="rounded-md px-4 h-10 bg-white">Send</button>
@@ -40,6 +41,7 @@ export default Vue.extend({
     onSubmit() {
       const data: ClientMessage = { room: this.roomName, text: this.message };
       this.$accessor.WS.sendMessage(data);
+      this.message = "";
     },
   },
 });
