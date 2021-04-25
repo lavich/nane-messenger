@@ -17,15 +17,5 @@ import RoomBar from "../components/RoomBar/index.vue";
 
 export default Vue.extend({
   components: { RoomBar },
-  mounted() {
-    // const wsUrl = process.env.VUE_APP_WS_URL;
-    try {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      this.$connect("wss://nane.tada.team/ws" + "?username={username}");
-    } catch (e) {
-      console.log({ e });
-    }
-  },
 });
 </script>

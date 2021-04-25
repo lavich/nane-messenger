@@ -31,6 +31,14 @@ const actions = actionTree(
       const settings = await getSettings();
       commit("SET_SETTINGS", settings);
     },
+    login({ dispatch }, userName: string) {
+      dispatch("User/setName", userName, { root: true });
+      dispatch("WS/connect", userName, { root: true });
+    },
+    logout({ dispatch }) {
+      dispatch("User/setName", "", { root: true });
+      dispatch("WS/disconnect", null, { root: true });
+    },
   }
 );
 

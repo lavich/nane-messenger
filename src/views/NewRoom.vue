@@ -6,7 +6,7 @@
     >
       Create New Room
     </div>
-    <InputForm />
+    <InputForm :room-name="''" />
   </div>
 </template>
 

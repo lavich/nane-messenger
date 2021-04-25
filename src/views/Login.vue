@@ -15,6 +15,7 @@
           Войти
         </button>
       </form>
+      <div v-if="error" class="text-red-600">Не удалось подключится</div>
     </div>
   </main>
 </template>
@@ -26,24 +27,30 @@ export default Vue.extend({
   name: "Login",
   data: () => ({
     userName: "",
+    error: false,
   }),
   computed: {
     maxLengthName(): number {
       return this.$accessor.settings.max_username_length;
     },
   },
+  watch: {
+    userName() {
+      this.error = false;
+    },
+  },
   methods: {
     async onSubmit() {
-      this.$accessor.User.setName(this.userName);
+      this.error = false;
       try {
+        this.$accessor.login(this.userName);
         await this.$accessor.Rooms.getRooms();
+        const firstRoom = this.$accessor.Rooms.rooms.find(Boolean);
+        const link = firstRoom ? "/chats/" + firstRoom.name : "/";
+        await this.$router.push(link);
       } catch (e) {
-        console.log({ e });
+        this.error = true;
       }
-
-      const firstRoom = this.$accessor.Rooms.rooms.find(Boolean);
-      const link = firstRoom ? "/chats/" + firstRoom.name : "/";
-      this.$router.push(link);
     },
   },
 });

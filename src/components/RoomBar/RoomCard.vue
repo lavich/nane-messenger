@@ -7,7 +7,7 @@
     <span class="w-10 h-10 rounded-full bg-gray-100 grid place-content-center">
       <span class="text-gray-600">{{ avatarName }}</span>
     </span>
-    <span class="flex-1 text-sm">
+    <span class="flex-1 text-sm line-clamp-1">
       <span class="flex justify-between">
         <span class="text-sm line-clamp-1">{{ room.name }}</span>
         <span class="text-xs">{{ lastMessageDate }}</span>

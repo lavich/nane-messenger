@@ -1,6 +1,8 @@
 import { actionTree, getterTree, mutationTree } from "typed-vuex";
+import { ClientMessage } from "@/types";
 
 interface State {
+  $socket: WebSocket | null;
   socket: {
     isConnected: boolean;
     message: string;
@@ -9,6 +11,7 @@ interface State {
 }
 
 export const state = (): State => ({
+  $socket: null,
   socket: {
     isConnected: false,
     message: "",
@@ -22,8 +25,8 @@ export const getters = getterTree(state, {
 });
 
 export const mutations = mutationTree(state, {
-  SOCKET_ONOPEN(state) {
-    // Vue.prototype.$socket = event.currentTarget;
+  SOCKET_ONOPEN(state, event: Event) {
+    state.$socket = event.currentTarget as WebSocket;
     state.socket.isConnected = true;
   },
   SOCKET_ONCLOSE(state) {
@@ -48,8 +51,18 @@ export const mutations = mutationTree(state, {
 export const actions = actionTree(
   { state, getters, mutations },
   {
-    // setName({ commit }, newName: string) {
-    //   commit("SET_NAME", newName);
-    // },
+    connect(_, userName: string) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      this._vm.$connect("wss://nane.tada.team/ws" + `?username=${userName}`);
+    },
+    disconnect() {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      this._vm.$disconnect();
+    },
+    sendMessage({ state }, message: ClientMessage) {
+      state.$socket?.send(JSON.stringify(message));
+    },
   }
 );

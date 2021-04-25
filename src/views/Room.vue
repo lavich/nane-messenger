@@ -14,7 +14,7 @@
       </ul>
     </div>
 
-    <InputForm />
+    <InputForm :room-name="room.name" />
   </div>
   <div v-else>Loading...</div>
 </template>

@@ -5,9 +5,10 @@
       alt="roma avatar"
       class="flex-shrink-0 w-12 h-12 rounded-full bg-gray-100 grid place-content-center"
     />
-    <span class="line-clamp-1">
+    <span class="flex-1 line-clamp-1">
       {{ name }}
     </span>
+    <router-link to="/logout" title="logout">🚪</router-link>
   </div>
 </template>
 

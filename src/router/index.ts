@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 
 import { loginGuard } from "./loginGuard";
+import { logoutGuard } from "@/router/logoutGuard";
 
 Vue.use(VueRouter);
 
@@ -10,6 +11,11 @@ const routes: Array<RouteConfig> = [
     path: "/login",
     name: "Login",
     component: () => import("../views/Login.vue"),
+  },
+  {
+    path: "/logout",
+    name: "Logout",
+    beforeEnter: logoutGuard,
   },
   {
     path: "/chats",
