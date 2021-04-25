@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-white block p-2 flex gap-2 rounded-md">
+  <div class="bg-white block p-2 flex gap-2 rounded-md w-full">
     <span class="w-10 h-10 rounded-full bg-gray-100 grid place-content-center">
       <span class="text-gray-600">{{ avatarName }}</span>
     </span>
-    <div class="flex-1 text-sm">
+    <div class="flex-1 text-sm w-full overflow-x-hidden">
       <span class="text-sm text-blue-400 line-clamp-1">{{ userName }}</span>
       <div>{{ message.text }}</div>
       <span class="pl-4 float-right text-xs text-gray-600">

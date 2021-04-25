@@ -8,7 +8,11 @@
       <ul
         class="min-h-full flex flex-col justify-end items-start space-y-2 p-2 bg-gray-100"
       >
-        <li v-for="(message, index) in room.messages" :key="index">
+        <li
+          v-for="(message, index) in room.messages"
+          :key="index"
+          class="w-full"
+        >
           <Message :message="message" />
         </li>
       </ul>
