@@ -1,6 +1,7 @@
 {
   "name": "messenger-tada-team",
   "version": "0.1.0",
+  "author": "lobanov.andrey.lavich@gmail.com",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
