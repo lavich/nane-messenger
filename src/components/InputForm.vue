@@ -19,16 +19,9 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { ClientMessage } from "@/types";
 
 export default Vue.extend({
   name: "InputForm",
-  props: {
-    roomName: {
-      type: String,
-      required: true,
-    },
-  },
   data: () => ({
     message: "",
   }),
@@ -39,8 +32,7 @@ export default Vue.extend({
   },
   methods: {
     onSubmit() {
-      const data: ClientMessage = { room: this.roomName, text: this.message };
-      this.$accessor.WS.sendMessage(data);
+      this.$emit("input", this.message);
       this.message = "";
     },
   },

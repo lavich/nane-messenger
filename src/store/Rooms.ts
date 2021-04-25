@@ -29,6 +29,12 @@ export const mutations = mutationTree(state, {
     );
   },
   ADD_MESSAGE(state, message: ServerMessage) {
+    const isNewRoom = !state.rooms.some((room) => room.name === message.room);
+    if (isNewRoom) {
+      const newRoom = { name: message.room, messages: [message] };
+      state.rooms = [...state.rooms, newRoom];
+      return;
+    }
     state.rooms = state.rooms.map((room) => {
       if (room.name === message.room) {
         const messages = [...room.messages, message];

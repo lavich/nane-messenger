@@ -52,9 +52,10 @@ export const actions = actionTree(
   { state, getters, mutations },
   {
     connect(_, userName: string) {
+      const wssUrl = process.env.VUE_APP_WS_URL;
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      this._vm.$connect("wss://nane.tada.team/ws" + `?username=${userName}`);
+      this._vm.$connect(wssUrl + `?username=${userName}`);
     },
     disconnect() {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment

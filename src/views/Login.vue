@@ -55,9 +55,3 @@ export default Vue.extend({
   },
 });
 </script>
-
-<style scoped>
-input:invalid:focus {
-  @apply bg-red-200;
-}
-</style>
